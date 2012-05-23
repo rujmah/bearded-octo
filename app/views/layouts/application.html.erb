@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DeviseTest</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	
+	<div id="user_nav">
+	  <% if admin_signed_in? %>
+	    Signed in as <%= current_admin.email %> (Admin). Not you?
+	    <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %>
+	  <% else %>
+	    <%# link_to "Admin Login", new_admin_registration_path %><!-- or--> <%= link_to "Admin", new_admin_session_path %>
+	  <% end %>
+	</div>
+	
+	<% flash.each do |name, msg| %>
+	  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+		<a class="close" data-dismiss="alert">×</a>
+		<%= msg %>
+	  </div>
+	<% end %>
+	
+
+<%= yield %>
+
+</body>
+</html>
