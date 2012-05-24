@@ -1,5 +1,6 @@
 class CompanyController < ApplicationController
-  before_filter :is_company_or_admin?
+  before_filter :authenticate_company_user!
+  
   def index
   end
   
