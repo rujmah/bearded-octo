@@ -9,11 +9,18 @@
 <body>
 	
 	<div id="user_nav">
+		<%= link_to 'Home', root_path %>
 	  <% if admin_signed_in? %>
 	    Signed in as <%= current_admin.email %> (Admin). Not you?
 	    <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %>
 	  <% else %>
-	    <%# link_to "Admin Login", new_admin_registration_path %><!-- or--> <%= link_to "Admin", new_admin_session_path %>
+	    <%= link_to "Admin", new_admin_session_path %>
+	  <% end %>
+		<% if company_user_signed_in? %>
+	    Signed in as <%= current_company_user.email %> (Company). Not you?
+	    <%= link_to "Sign out", destroy_company_user_session_path, :method => :delete %>
+	  <% else %>
+	    <%= link_to "Company", new_company_user_session_path %>
 	  <% end %>
 	</div>
 	

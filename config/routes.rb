@@ -4,7 +4,7 @@ DeviseTest::Application.routes.draw do
 
   root :to => "home#index"
   match 'secure' => "secure#index", :as => :securearea
-  match 'secure' => "company#index", :as => :companyarea
+  match 'company' => "company#index", :as => :companyarea
 
 
 end
